@@ -1,19 +1,16 @@
-DROP DATABASE IF EXISTS `alx_book_store`;
+-- Database: alx_book_store
 
-CREATE DATABASE `alx_book_store`
+DROP DATABASE IF EXISTS alx_book_store;
+CREATE DATABASE IF NOT EXISTS alx_book_store
   CHARACTER SET UTF8MB4
-  COLLATE UTF8MB4_UNICODE_CI
+  COLLATE UTF8MB4_UNICODE_CI;
 
-USE `alx_book_store`
+USE alx_book_store;
 
-
-CREATE TABLE Authors(
+CREATE TABLE Authors (
   author_id INT PRIMARY KEY AUTO_INCREMENT,
-  author_name VARCHAR(215),
-
+  author_name VARCHAR(215)
 );
-
-
 
 CREATE TABLE Books (
   book_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -24,7 +21,6 @@ CREATE TABLE Books (
   FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
-
 CREATE TABLE Customers (
   customer_id INT PRIMARY KEY AUTO_INCREMENT,
   customer_name VARCHAR(215),
@@ -32,15 +28,12 @@ CREATE TABLE Customers (
   address TEXT
 );
 
-
-
 CREATE TABLE Orders (
   order_id INT PRIMARY KEY AUTO_INCREMENT,
   customer_id INT,
   order_date DATE,
   FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
-
 
 CREATE TABLE Order_Details (
   orderdetailid INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,4 +43,3 @@ CREATE TABLE Order_Details (
   FOREIGN KEY (order_id) REFERENCES Orders(order_id),
   FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
-
